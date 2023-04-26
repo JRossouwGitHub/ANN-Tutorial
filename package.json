@@ -1,0 +1,14 @@
+{
+  "name": "ann-tutorial",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^11.8.0"
+  }
+}
