@@ -1,21 +1,21 @@
-const math = require("./dot.js")
+const math = require("./Library/dot.js")
 const NeuralNetwork = require("./NeuralNetwork.js")
-const Layer = require("./Layer.js")
+const Dense = require("./Layers/Dense.js")
+const ReLU = require("./Activations/ReLU.js")
+const Softmax = require("./Activations/Softmax.js")
+const data = require("./Library/Util.js")
 
-const X = [
-    [1.0, 2.0, 3.0, 2.5],
-    [2.0, 5.0, -1.0, 2.0],
-    [-1.5, 2.7, 3.3, -0.8]
-]
+const [X, y] = data.spiral_data(100, 3)
 
-const ANN = new NeuralNetwork(X)
+let layer1 = new Dense(2, 3)
+let activation1 = new ReLU()
 
-let layer1 = new Layer(4, 5)
-let layer2 = new Layer(5, 2)
+let layer2 = new Dense(3, 3)
+let activation2 = new Softmax()
 
-ANN.layers = [
-    layer1,
-    layer2
-]
+layer1.forward(X)
+activation1.forward(layer1.output)
+layer2.forward(activation1.output)
+activation2.forward(layer2.output)
 
-ANN.run()
+console.log(activation2.output)

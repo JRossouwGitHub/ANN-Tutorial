@@ -1,4 +1,4 @@
-const math = require("./dot");
+const math = require("./Library/dot");
 
 //Inputs
 //This can 1 of 2: Either the true inputs, or outputs from a previous neuron
@@ -31,3 +31,21 @@ let layer1_outputs = math.dot(inputs, weights, biases)
 let layer2_outputs = math.dot(layer1_outputs, weights2, biases2)
 
 console.log(layer2_outputs)
+
+/* ---------------------------------------------- */
+//Softmax math
+inputs = [
+    [4.8, 1.21, 2.385],
+    [8.9, -1.81, 0.2],
+    [1.41, 1.051, 0.026]
+]
+
+let max_value = inputs.map(layer => layer.map(v => math.max(layer)))
+
+let exp_values = inputs.map(layer => layer.map(v => math.exp(v - math.max(layer))))
+
+let norm_outputs = exp_values.map((layer, index) => layer.map(ev => ev / exp_values.map(layer => [math.sum(layer)])[index]))
+
+console.log(max_value)
+console.log(exp_values)
+console.log(norm_outputs)
