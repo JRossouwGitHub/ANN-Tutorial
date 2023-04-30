@@ -1,7 +1,4 @@
-// const math = require('mathjs')
-// const clip = require("./Library/clip.js").clip
-
-
+const math = require("mathjs")
 const NeuralNetwork = require("./NeuralNetwork.js")
 const Dense = require("./Layers/Dense.js")
 const ReLU = require("./Activations/ReLU.js")
@@ -25,3 +22,7 @@ activation2.forward(layer2.output)
 let loss_func = new CategoricalCrossEntropy()
 let loss = loss_func.calculate(activation2.output, y)
 console.log("Loss:", loss)
+
+let predictions = activation2.output.map(layer => layer.indexOf(math.max(layer)))
+let accuracy = math.mean(predictions.map((p, index) => p == y[index]))
+console.log(accuracy)

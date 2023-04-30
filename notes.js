@@ -60,3 +60,17 @@ let loss = -(math.log(softmax_output[0]) * target_output[0] + math.log(softmax_o
 console.log(loss)
 loss = -math.log(softmax_output[0]) //simplified
 console.log(loss)
+
+//Accuracy
+let softmax_outputs = [
+    [0.7, 0.2, 0.1],
+    [0.5, 0.1, 0.4],
+    [0.02, 0.9, 0.08]
+]
+
+let class_targets = [0, 1, 1]
+
+let predictions = softmax_outputs.map(layer => layer.indexOf(math.max(layer)))
+let accuracy = math.mean(predictions.map((p, index) => p == class_targets[index]))
+console.log(predictions)
+console.log(accuracy)
