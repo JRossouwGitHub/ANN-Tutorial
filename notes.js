@@ -49,3 +49,14 @@ let norm_outputs = exp_values.map((layer, index) => layer.map(ev => ev / exp_val
 console.log(max_value)
 console.log(exp_values)
 console.log(norm_outputs)
+
+
+//Loss calc
+let softmax_output = [0.7, 0.1, 0.2]
+let target_output = [1, 0, 0]
+
+
+let loss = -(math.log(softmax_output[0]) * target_output[0] + math.log(softmax_output[1]) * target_output[1] + math.log(softmax_output[2]) * target_output[2])
+console.log(loss)
+loss = -math.log(softmax_output[0]) //simplified
+console.log(loss)
